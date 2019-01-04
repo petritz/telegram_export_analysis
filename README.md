@@ -1,2 +1,2 @@
-# telegram_export_analysis
+# Telegram Export Analysis
 Analysis Tool for Telegram Exports
