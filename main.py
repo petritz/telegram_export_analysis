@@ -59,7 +59,22 @@ def parse_messages(path, msgList):
   with open(fullPath) as fp:
     soup = BeautifulSoup(fp, 'lxml', from_encoding='utf8')
     name = soup.find('div', class_='page_header')
-    print('Chat \"' + name.text.strip() + '\" Part ' + str(msgList))
+    history = soup.find('div', class_='history')
+    data = parse_single(history)
+    print('Chat \"' + name.text.strip() + '\" Part ' + str(msgList) + ' finished.')
+    return data
+  return []
+
+"""
+Builds a array of dictionary of the parsed messages
+"""
+def parse_single(soup):
+  data = []
+  # we now have many div.message in here
+  # message.default => normal message
+  # message.service => things like invited
+  # message.joined  => from the same user as above
+  return data
 
 """
 Reads the given path and saves the files into the list.
